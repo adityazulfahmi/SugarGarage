@@ -4,6 +4,7 @@ import time
 import Adafruit_DHT
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 
 TEMPERATURE_PIN = 4
 RANGE_TRIG = 23 
@@ -20,14 +21,14 @@ while True:
   update_0 = temperature
   update_1 = humidity
   if humidity is not None and temperature is not None: 
-    print 'Temp = {0:0.1f}*C '.format(temperature) 
-    print 'Humidity = {0:0.1f}% '.format(humidity) 
+    print 'Temp : {0:0.1f}*C '.format(temperature) 
+    print 'Humidity : {0:0.1f}% '.format(humidity) 
     humidity, temperature = Adafruit_DHT.read_retry(sensor, TEMPERATURE_PIN)
 
     #distance part 
     GPIO.output(RANGE_TRIG, False)
-    print "Waiting For Sensor To Settle"
-    time.sleep(1)
+    #print "Waiting For Sensor To Settle"
+    time.sleep(0.5)
 
     GPIO.output(RANGE_TRIG, True)
 
@@ -46,7 +47,7 @@ while True:
 
     distance = round(distance, 2)
 
-    print "Distance:",distance,"cm"
+    print "Distance : ",distance,"cm"
   else: 
     print 'Failed to get reading. Try again!'
 
