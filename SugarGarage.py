@@ -8,11 +8,11 @@ GPIO.setmode(GPIO.BCM)
 TEMPERATURE_PIN = 4
 RANGE_TRIG = 23 
 RANGE_ECHO = 24
+GPIO.setup(RANGE_TRIG,GPIO.OUT)
+GPIO.setup(RANGE_ECHO,GPIO.IN)
 sensor = Adafruit_DHT.DHT11
 update_0 = 0
 update_1 = 0
-GPIO.setup(RANGE_TRIG,GPIO.OUT)
-GPIO.setup(RANGE_ECHO,GPIO.IN)
 
 while True: 
   #temperature part

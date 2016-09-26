@@ -1,12 +1,5 @@
 import RPi.GPIO as GPIO
-import sys
 import time
-import Adafruit_DHT
-
-sensor = Adafruit_DHT.DHT11
-pin = 4
-update_0 = 0
-update_1 = 0
 GPIO.setmode(GPIO.BCM)
 
 TRIG = 23 
