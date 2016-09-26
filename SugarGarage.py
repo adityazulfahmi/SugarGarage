@@ -39,7 +39,7 @@ while True:
 
     distance = round(distance, 2)
 
-    print "Distance : ",distance,"cm" x
+    print "Distance : ",distance,"cm",x
 
   #temperature part
   humidity, temperature = Adafruit_DHT.read_retry(sensor, TEMPERATURE_PIN) 
