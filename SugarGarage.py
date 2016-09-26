@@ -20,7 +20,7 @@ while True:
      #distance part 
     GPIO.output(RANGE_TRIG, False)
     #print "Waiting For Sensor To Settle"
-    time.sleep(0.5)
+    time.sleep(1)
 
     GPIO.output(RANGE_TRIG, True)
 
