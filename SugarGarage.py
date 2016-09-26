@@ -51,12 +51,5 @@ while True:
   else: 
     print 'Failed to get reading. Try again!'
 
-  if update_0 != temperature : 
-    print"##### UPDATE ! ! ! #####"
-
-  if update_1 != humidity : 
-    print"##### UPDATE ! ! ! #####"
-
-  else: 
-    print"######################"
+  print"######################"
 GPIO.cleanup()
