@@ -16,16 +16,8 @@ update_0 = 0
 update_1 = 0
 
 while True: 
-  #temperature part
-  humidity, temperature = Adafruit_DHT.read_retry(sensor, TEMPERATURE_PIN) 
-  update_0 = temperature
-  update_1 = humidity
-  if humidity is not None and temperature is not None: 
-    print 'Temp : {0:0.1f}*C '.format(temperature) 
-    print 'Humidity : {0:0.1f}% '.format(humidity) 
-    humidity, temperature = Adafruit_DHT.read_retry(sensor, TEMPERATURE_PIN)
-
-    #distance part 
+  for x in xrange(0, 5):
+     #distance part 
     GPIO.output(RANGE_TRIG, False)
     #print "Waiting For Sensor To Settle"
     time.sleep(0.5)
@@ -47,7 +39,13 @@ while True:
 
     distance = round(distance, 2)
 
-    print "Distance : ",distance,"cm"
+    print "Distance : ",distance,"cm" x
+
+  #temperature part
+  humidity, temperature = Adafruit_DHT.read_retry(sensor, TEMPERATURE_PIN) 
+  if humidity is not None and temperature is not None: 
+    print 'Temp : {0:0.1f}*C '.format(temperature) 
+    print 'Humidity : {0:0.1f}% '.format(humidity)
   else: 
     print 'Failed to get reading. Try again!'
 
