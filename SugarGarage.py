@@ -5,10 +5,10 @@ import Adafruit_DHT
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 
+TEMPERATURE_PIN = 4
 RANGE_TRIG = 23 
 RANGE_ECHO = 24
 sensor = Adafruit_DHT.DHT11
-TEMPERATURE_PIN = 4
 update_0 = 0
 update_1 = 0
 GPIO.setup(RANGE_TRIG,GPIO.OUT)
@@ -16,13 +16,13 @@ GPIO.setup(RANGE_ECHO,GPIO.IN)
 
 while True: 
   #temperature part
-  humidity, temperature = Adafruit_DHT.read_retry(sensor, pin) 
+  humidity, temperature = Adafruit_DHT.read_retry(sensor, TEMPERATURE_PIN) 
   update_0 = temperature
   update_1 = humidity
   if humidity is not None and temperature is not None: 
     print 'Temp = {0:0.1f}*C '.format(temperature) 
     print 'Humidity = {0:0.1f}% '.format(humidity) 
-    humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
+    humidity, temperature = Adafruit_DHT.read_retry(sensor, TEMPERATURE_PIN)
 
     #distance part 
     GPIO.output(RANGE_TRIG, False)
