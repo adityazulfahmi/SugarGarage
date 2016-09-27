@@ -12,7 +12,7 @@ BUZZER_PIN = 21
 RANGE_TRIG = 23 
 RANGE_ECHO = 24
 
-GPIO.setup(buzzerPin, GPIO.OUT)
+GPIO.setup(BUZZER_PIN, GPIO.OUT)
 GPIO.setup(RANGE_TRIG,GPIO.OUT)
 GPIO.setup(RANGE_ECHO,GPIO.IN)
 sensor = Adafruit_DHT.DHT11
@@ -22,9 +22,9 @@ def buz(pitch,duration):
   delay = period /2
   cycles = int (duration*pitch)
   for i in range(cycles):
-    GPIO.output(buzzerPin, True)
+    GPIO.output(BUZZER_PIN, True)
     time.sleep(delay)
-    GPIO.output(buzzerPin, False)
+    GPIO.output(BUZZER_PIN, False)
     time.sleep(delay)
 def myfunc(i):
   while True:
