@@ -15,9 +15,15 @@ def buz(pitch,duration):
                 GPIO.output(buzzerPin, False)
                 time.sleep(delay)
 
-
-while True:
-	buz(5000,7)
-	
+interval=sys.argv
+start = time.time()
+end = time.time()
+while (end - start < 1):
+	startInterval = time.time()
+        endInterval = time.time()
+        while (endInterval-start interval < interval):
+                buz(5000,7)
+        time.sleep(interval)
+        end = time.time()
 
 GPIO.cleanup() # cleanup all GPIO
