@@ -27,8 +27,9 @@ def buz(pitch,duration):
     GPIO.output(BUZZER_PIN, False)
     time.sleep(delay)
 def myfunc(i):
-  while True:
-    buz(5000,7)
+  buzzerStart=time.time()
+  buzzerEnd=time.time()
+  buz(5000,1)
 
 secure = 1
 
