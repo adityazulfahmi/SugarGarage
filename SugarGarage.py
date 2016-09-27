@@ -29,7 +29,7 @@ def buz(pitch,duration):
 def myfunc(i):
   buzzerStart=time.time()
   buzzerEnd=time.time()
-  buz(5000,1)
+  buz(50,1)
 
 secure = 1
 
