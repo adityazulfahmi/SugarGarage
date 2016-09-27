@@ -29,7 +29,7 @@ def buz(pitch,duration):
 def myfunc(dist):
   buzzerStart=time.time()
   buzzerEnd=time.time()
-  while (buzzerEnd-buzzerStart<1)
+  while (buzzerEnd-buzzerStart<1):
     buz(50,0.1*dist)
     time.sleep(0.1*dist)
     buzzerEnd=time.time()
