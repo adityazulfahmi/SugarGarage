@@ -14,5 +14,5 @@ def myfunc2(i):
 for i in range(10):
     t = Thread(target=myfunc, args=(i,))
     t.start()
-    t2 = Thread(target=myfunc2, args=((i+1),0))
+    t2 = Thread(target=myfunc2, args=((i+1),))
     t2.start()
