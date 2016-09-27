@@ -71,7 +71,8 @@ while True:
 
       else:
         print "Distance : ",distance,"cm",x
-  else:
+
+    
     #temperature part
     humidity, temperature = Adafruit_DHT.read_retry(sensor, TEMPERATURE_PIN) 
     if humidity is not None and temperature is not None: 
@@ -81,4 +82,5 @@ while True:
       print 'Failed to get reading. Try again!'
 
     print"######################"
+  else:
 GPIO.cleanup()
