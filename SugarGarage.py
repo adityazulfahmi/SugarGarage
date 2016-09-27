@@ -17,6 +17,9 @@ GPIO.setup(RANGE_TRIG,GPIO.OUT)
 GPIO.setup(RANGE_ECHO,GPIO.IN)
 sensor = Adafruit_DHT.DHT11
 
+secure = 1
+sleepTime = 5
+
 def buz(pitch,duration):
   period = 1.0/pitch
   delay = period /2
@@ -30,12 +33,11 @@ def myfunc(dist):
   dist=round(dist)
   buzzerStart=time.time()
   buzzerEnd=time.time()
-  while (buzzerEnd-buzzerStart<1):
+  while (buzzerEnd-buzzerStart<sleepTime):
     buz(50,0.05*dist)
     time.sleep(0.05*dist)
     buzzerEnd=time.time()
 
-secure = 1
 
 while True: 
   if secure == 1:
@@ -43,7 +45,7 @@ while True:
        #distance part 
       GPIO.output(RANGE_TRIG, False)
       #print "Waiting For Sensor To Settle"
-      time.sleep(1)
+      time.sleep(sleepTime)
 
       GPIO.output(RANGE_TRIG, True)
 
