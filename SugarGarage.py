@@ -3,17 +3,29 @@ import sys
 import time
 import Adafruit_DHT
 import RPi.GPIO as GPIO
+from threading import Thread
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 TEMPERATURE_PIN = 4
+BUZZER_PIN = 21
 RANGE_TRIG = 23 
 RANGE_ECHO = 24
+
+GPIO.setup(buzzerPin, GPIO.OUT)
 GPIO.setup(RANGE_TRIG,GPIO.OUT)
 GPIO.setup(RANGE_ECHO,GPIO.IN)
 sensor = Adafruit_DHT.DHT11
-update_0 = 0
-update_1 = 0
+
+def buz(pitch,duration):
+        period = 1.0/pitch
+        delay = period /2
+        cycles = int (duration*pitch)
+        for i in range(cycles):
+                GPIO.output(buzzerPin, True)
+                time.sleep(delay)
+                GPIO.output(buzzerPin, False)
+                time.sleep(delay)
 
 secure = 1
 
@@ -44,7 +56,7 @@ while True:
 
       if (distance<10):
         print "Distance Urgent : ",distance,"cm",x
-        os.system("buzzer.py 0.5")
+
       else:
         print "Distance : ",distance,"cm",x
   else:
