@@ -18,14 +18,17 @@ GPIO.setup(RANGE_ECHO,GPIO.IN)
 sensor = Adafruit_DHT.DHT11
 
 def buz(pitch,duration):
-        period = 1.0/pitch
-        delay = period /2
-        cycles = int (duration*pitch)
-        for i in range(cycles):
-                GPIO.output(buzzerPin, True)
-                time.sleep(delay)
-                GPIO.output(buzzerPin, False)
-                time.sleep(delay)
+  period = 1.0/pitch
+  delay = period /2
+  cycles = int (duration*pitch)
+  for i in range(cycles):
+    GPIO.output(buzzerPin, True)
+    time.sleep(delay)
+    GPIO.output(buzzerPin, False)
+    time.sleep(delay)
+def myfunc(i):
+  while True:
+    buz(5000,7)
 
 secure = 1
 
@@ -56,6 +59,8 @@ while True:
 
       if (distance<10):
         print "Distance Urgent : ",distance,"cm",x
+        t = Thread(target=myfunc, args=(10,))
+        t.start()
 
       else:
         print "Distance : ",distance,"cm",x
