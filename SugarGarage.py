@@ -27,11 +27,12 @@ def buz(pitch,duration):
     GPIO.output(BUZZER_PIN, False)
     time.sleep(delay)
 def myfunc(dist):
+  dist=round(dist)
   buzzerStart=time.time()
   buzzerEnd=time.time()
   while (buzzerEnd-buzzerStart<1):
-    buz(50,0.1*dist)
-    time.sleep(0.1*dist)
+    buz(50,0.05*dist)
+    time.sleep(0.05*dist)
     buzzerEnd=time.time()
 
 secure = 1
@@ -61,7 +62,7 @@ while True:
 
       distance = round(distance, 2)
 
-      if (distance<5):
+      if (distance<10):
         print "Distance Urgent : ",distance,"cm",x
         t = Thread(target=myfunc, args=(distance,))
         t.start()
