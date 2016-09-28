@@ -71,15 +71,15 @@ while True:
 
     distance = round(distance)
 
-    if (distance<20):
-      t = Thread(target=myfunc, args=(distance,))
-      t.start()
-    elif (distance > 50 and light == GPIO.HIGH):
+    if (distance > 50 and light == GPIO.HIGH):
       light=GPIO.LOW
       GPIO.output(LIGHT_PIN, light)
     elif (distance < 50 and light == GPIO.LOW):
       light=GPIO.HIGH
       GPIO.output(LIGHT_PIN, light)
+      if (distance<20):
+        t = Thread(target=myfunc, args=(distance,))
+        t.start()
     print "Distance : ",distance,"cm"
     prevSecure=0
 
