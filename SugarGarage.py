@@ -47,7 +47,8 @@ def myfunc(dist):
 while True: 
   if secure == 0:
     if (prevSecure == 1):
-      GPIO.output(LIGHT_PIN, GPIO.HIGH)
+      light=GPIO.HIGH
+      GPIO.output(LIGHT_PIN, light)
     #distance part 
     GPIO.output(RANGE_TRIG, False)
     #print "Waiting For Sensor To Settle"
@@ -75,8 +76,10 @@ while True:
       t.start()
     elif (distance > 50 and light == GPIO.HIGH):
       light=GPIO.LOW
+      GPIO.output(LIGHT_PIN, light)
     elif (distance < 50 and light == GPIO.LOW):
       light=GPIO.HIGH
+      GPIO.output(LIGHT_PIN, light)
     print "Distance : ",distance,"cm"
     prevSecure=0
 
