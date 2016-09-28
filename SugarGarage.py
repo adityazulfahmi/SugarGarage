@@ -58,9 +58,9 @@ def on_message(client, userdata, msg):
   print(msg.payload)
   if(msh.payload=="0"):
     secure=0
-  elif(msh.payload=="1"):
+  elif(msg.payload=="1"):
     secure=1
-  elif(msh.payload=="2"):
+  elif(msg.payload=="2"):
     secure=0
 
 
