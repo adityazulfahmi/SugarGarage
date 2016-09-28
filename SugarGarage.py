@@ -50,7 +50,31 @@ def alert(var):
     buz(buzPitch,0.25)
     time.sleep(0.1)
 
+def on_connect(client, userdata, flags, rc): 
+  print("Connected with result code "+str(rc)) 
+  client.subscribe("topic/test") 
 
+def on_message(client, userdata, msg): 
+  print(msg.payload)
+  if(msh.payload=="0"):
+    secure=0
+  elif(msh.payload=="1"):
+    secure=1
+  elif(msh.payload=="2"):
+    secure=0
+
+
+def connect():
+  client = mqtt.Client() 
+  client.connect("localhost",1883,60) 
+
+  client.on_connect = on_connect 
+  client.on_message = on_message 
+
+  client.loop_forever()
+
+t = Thread(target=connect)
+t.start()
 
 while True: 
   if secure == 0:
@@ -128,7 +152,8 @@ while True:
   #temperature part
   humidity, temperature = Adafruit_DHT.read_retry(sensor, TEMPERATURE_PIN) 
   if humidity is not None and temperature is not None: 
-    print 'Temp : {0:0.1f}*C '.format(temperature) 
+    print 'Temp : {0:0.1f}*C '.format(temperature)
+    print temperature 
     print 'Humidity : {0:0.1f}% '.format(humidity)
   else: 
     print 'Failed to get reading. Try again!'
