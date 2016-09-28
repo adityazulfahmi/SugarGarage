@@ -56,7 +56,7 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg): 
   print(msg.payload)
-  if(msh.payload=="0"):
+  if(msg.payload=="0"):
     secure=0
   elif(msg.payload=="1"):
     secure=1
