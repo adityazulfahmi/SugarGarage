@@ -21,7 +21,7 @@ sensor = Adafruit_DHT.DHT11
 
 secure = 0
 prevSecure = 0
-light = 0
+light = GPIO.LOW
 sleepTime = 5
 
 def buz(pitch,duration):
@@ -38,16 +38,16 @@ def myfunc(dist):
   buzzerStart=time.time()
   buzzerEnd=time.time()
   while (buzzerEnd-buzzerStart<sleepTime):
-    buz(50,0.05*dist)
+    buz(5000,0.05*dist)
     time.sleep(0.05*dist)
     buzzerEnd=time.time()
 
-GPIO.output(LIGHT_PIN, True)
+
 
 while True: 
   if secure == 0:
-    #if (prevSecure == 1):
-      #lightOn
+    if (prevSecure == 1):
+      GPIO.output(LIGHT_PIN, GPIO.HIGH)
     #distance part 
     GPIO.output(RANGE_TRIG, False)
     #print "Waiting For Sensor To Settle"
@@ -71,11 +71,13 @@ while True:
     distance = round(distance)
 
     if (distance<20):
-      print "Distance Urgent : ",distance,"cm"
       t = Thread(target=myfunc, args=(distance,))
       t.start()
-    else:
-      print "Distance : ",distance,"cm"
+    elif (distance > 50 and light == GPIO.HIGH):
+      light=GPIO.LOW
+    elif (distance < 50 and light == GPIO.LOW):
+      light=GPIO.HIGH
+    print "Distance : ",distance,"cm"
     prevSecure=0
 
   elif (secure==1):
