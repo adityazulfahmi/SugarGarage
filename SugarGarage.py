@@ -79,6 +79,7 @@ while True:
     prevSecure=0
 
   elif (secure==1):
+    print "Secure"
   #temperature part
   humidity, temperature = Adafruit_DHT.read_retry(sensor, TEMPERATURE_PIN) 
   if humidity is not None and temperature is not None: 
