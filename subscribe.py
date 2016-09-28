@@ -10,7 +10,6 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg): 
 	print(msg.payload) 
-	client.disconnect() 
      
 client = mqtt.Client() 
 client.connect("localhost",1883,60) 
