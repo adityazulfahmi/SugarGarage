@@ -147,7 +147,8 @@ while True:
       GPIO.output(LIGHT_PIN, light)
       #takephoto
       alert(20)
-  elif (secure==1):
+  elif (secure==2):
+    print "danger"
   #temperature part
   humidity, temperature = Adafruit_DHT.read_retry(sensor, TEMPERATURE_PIN) 
   if humidity is not None and temperature is not None: 
