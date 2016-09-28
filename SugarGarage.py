@@ -24,7 +24,7 @@ secure = 0
 prevSecure = 0
 light = GPIO.LOW
 sleepTime = 5
-buzPitch = 2500
+buzPitch = 5000
 
 def buz(pitch,duration):
   period = 1.0/pitch
@@ -45,8 +45,7 @@ def myfunc(dist):
     buzzerEnd=time.time()
 
 def alert(var):
-  #while (secure==2):
-  for i in range (0,10):
+  while (secure==2):
     buz(buzPitch,0.25)
     time.sleep(0.1)
 
@@ -63,7 +62,6 @@ def on_message(client, userdata, msg):
   elif(msg.payload=="2"):
     secure=0
 
-
 def connect():
   client = mqtt.Client() 
   client.connect("localhost",1883,60) 
@@ -77,6 +75,7 @@ t = Thread(target=connect)
 t.start()
 
 while True: 
+  print secure
   if secure == 0:
     if (prevSecure == 1):
       light=GPIO.HIGH
@@ -148,7 +147,7 @@ while True:
       GPIO.output(LIGHT_PIN, light)
       #takephoto
       alert(20)
-
+  elif (secure==1):
   #temperature part
   humidity, temperature = Adafruit_DHT.read_retry(sensor, TEMPERATURE_PIN) 
   if humidity is not None and temperature is not None: 
