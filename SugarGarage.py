@@ -46,7 +46,7 @@ GPIO.output(LIGHT_PIN, True)
 
 while True: 
   if secure == 0:
-    if (prevSecure == 1):
+    #if (prevSecure == 1):
       #lightOn
     #distance part 
     GPIO.output(RANGE_TRIG, False)
