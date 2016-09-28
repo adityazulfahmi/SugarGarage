@@ -78,7 +78,7 @@ while True:
       print "Distance : ",distance,"cm",x
     prevSecure=0
 
-  else if (secure==1):
+  elif (secure==1):
   #temperature part
   humidity, temperature = Adafruit_DHT.read_retry(sensor, TEMPERATURE_PIN) 
   if humidity is not None and temperature is not None: 
