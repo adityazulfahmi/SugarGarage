@@ -71,11 +71,11 @@ while True:
     distance = round(distance)
 
     if (distance<20):
-      print "Distance Urgent : ",distance,"cm",x
+      print "Distance Urgent : ",distance,"cm"
       t = Thread(target=myfunc, args=(distance,))
       t.start()
     else:
-      print "Distance : ",distance,"cm",x
+      print "Distance : ",distance,"cm"
     prevSecure=0
 
   elif (secure==1):
