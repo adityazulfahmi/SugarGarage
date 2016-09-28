@@ -4,6 +4,7 @@ import time
 import Adafruit_DHT
 import RPi.GPIO as GPIO
 from threading import Thread
+import paho.mqtt.client as mqtt 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
@@ -23,7 +24,7 @@ secure = 1
 prevSecure = 0
 light = GPIO.LOW
 sleepTime = 5
-buzPitch = 5000
+buzPitch = 2500
 
 def buz(pitch,duration):
   period = 1.0/pitch
@@ -45,7 +46,7 @@ def myfunc(dist):
 
 def alert(var):
   #while (secure==2):
-  for i in range (0,50):
+  for i in range (0,10):
     buz(buzPitch,0.25)
     time.sleep(0.1)
 
