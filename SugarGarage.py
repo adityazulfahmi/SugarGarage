@@ -20,7 +20,7 @@ GPIO.setup(RANGE_TRIG,GPIO.OUT)
 GPIO.setup(RANGE_ECHO,GPIO.IN)
 sensor = Adafruit_DHT.DHT11
 
-secure = 1
+secure = 0
 prevSecure = 0
 light = GPIO.LOW
 sleepTime = 5
