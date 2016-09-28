@@ -19,7 +19,7 @@ GPIO.setup(RANGE_TRIG,GPIO.OUT)
 GPIO.setup(RANGE_ECHO,GPIO.IN)
 sensor = Adafruit_DHT.DHT11
 
-secure = 0
+secure = 1
 prevSecure = 0
 light = GPIO.LOW
 sleepTime = 5
@@ -123,7 +123,7 @@ while True:
       GPIO.output(LIGHT_PIN, light)
       #takephoto
       alert(20)
-      
+
   #temperature part
   humidity, temperature = Adafruit_DHT.read_retry(sensor, TEMPERATURE_PIN) 
   if humidity is not None and temperature is not None: 
