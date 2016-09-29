@@ -30,7 +30,7 @@ buzPitch = 250
 def shoot (time):
   camera=picamera.PiCamera()
   for i in range (0,time):
-    camera.capture('image'+str(i)+'jpg')
+    camera.capture('image'+str(i)+'.jpg')
     time.sleep(0.4)
 
 def buz(pitch,duration):
