@@ -153,8 +153,11 @@ while True:
       secure=2
       light=GPIO.HIGH
       GPIO.output(LIGHT_PIN, light)
-      t3 = Thread(target=shoot, args=(10,))
-      t3.start()
+      
+      camera=picamera.PiCamera()
+      camera.capture('thief.jpg')
+      #t3 = Thread(target=shoot, args=(10,))
+      #t3.start()
       alert(20)
   elif (secure==2):
     print "danger"
