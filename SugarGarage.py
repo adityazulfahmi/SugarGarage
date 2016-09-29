@@ -28,9 +28,9 @@ sleepTime = 2
 buzPitch = 250
 
 def shoot (time):
-  camera=picamera.PiCamera()
+  #camera=picamera.PiCamera()
   for i in range (0,time):
-    camera.capture('/home/pi/SugarGarage/thief'+str(i)+'.jpg')
+    #camera.capture('/home/pi/SugarGarage/thief'+str(i)+'.jpg')
     time.sleep(0.4)
 
 def buz(pitch,duration):
@@ -156,8 +156,8 @@ while True:
       
       camera=picamera.PiCamera()
       camera.capture('/home/pi/SugarGarage/thief.jpg')
-      t3 = Thread(target=shoot, args=(10,))
-      t3.start()
+      #t3 = Thread(target=shoot, args=(10,))
+      #t3.start()
       alert(20)
   elif (secure==2):
     print "danger"
