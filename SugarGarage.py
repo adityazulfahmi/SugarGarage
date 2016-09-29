@@ -155,7 +155,7 @@ while True:
       GPIO.output(LIGHT_PIN, light)
       
       camera=picamera.PiCamera()
-      camera.capture('/homethief.jpg')
+      camera.capture('/home/pi/SugarGarage/thief.jpg')
       #t3 = Thread(target=shoot, args=(10,))
       #t3.start()
       alert(20)
