@@ -26,7 +26,7 @@ light = GPIO.LOW
 sleepTime = 2
 buzPitch = 250
 
-def shoot (time)
+def shoot (time):
   for i in range (0,time):
     camera.capture('image'.i.'jpg')
     time.sleep(0.4)
