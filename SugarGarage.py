@@ -46,7 +46,7 @@ def myfunc(dist):
   dist=dist-2
   buzzerStart=time.time()
   buzzerEnd=time.time()
-  while (buzzerEnd-buzzerStart<(sleepTime+1):
+  while (buzzerEnd-buzzerStart<(sleepTime+1)):
     buz(buzPitch,0.05*dist)
     time.sleep(0.05*dist)
     buzzerEnd=time.time()
