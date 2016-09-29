@@ -23,8 +23,8 @@ sensor = Adafruit_DHT.DHT11
 secure = 0
 prevSecure = 0
 light = GPIO.LOW
-sleepTime = 5
-buzPitch = 5000
+sleepTime = 2
+buzPitch = 250
 
 def buz(pitch,duration):
   period = 1.0/pitch
@@ -154,8 +154,10 @@ while True:
   humidity, temperature = Adafruit_DHT.read_retry(sensor, TEMPERATURE_PIN) 
   if humidity is not None and temperature is not None: 
     print 'Temp : {0:0.1f}*C '.format(temperature)
-    print temperature 
-    print 'Humidity : {0:0.1f}% '.format(humidity)
+    if (temperature>30):
+      secure=2
+      light=GPIO.HIGH
+      GPIO.output(LIGHT_PIN, light)
   else: 
     print 'Failed to get reading. Try again!'
 
