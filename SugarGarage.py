@@ -169,6 +169,7 @@ while True:
       secure=2
       light=GPIO.HIGH
       GPIO.output(LIGHT_PIN, light)
+      alert(20)
   else: 
     print 'Failed to get reading. Try again!'
 
