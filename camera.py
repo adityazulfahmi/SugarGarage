@@ -3,7 +3,4 @@ import time
 
 camera=picamera.PiCamera()
 
-camera.start_preview()
-time.sleep(10)
-camera.stop_preview()
-
+camera.capture('image2.jpg')
