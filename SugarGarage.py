@@ -26,6 +26,11 @@ light = GPIO.LOW
 sleepTime = 2
 buzPitch = 250
 
+def shoot (time)
+  for i in range (0,time):
+    camera.capture('image'.i.'jpg')
+    time.sleep(0.4)
+
 def buz(pitch,duration):
   period = 1.0/pitch
   delay = period /2
@@ -72,8 +77,8 @@ def connect():
 
   client.loop_forever()
 
-t = Thread(target=connect)
-t.start()
+t2 = Thread(target=connect)
+t2.start()
 
 while True: 
   print secure
@@ -146,7 +151,8 @@ while True:
       secure=2
       light=GPIO.HIGH
       GPIO.output(LIGHT_PIN, light)
-      #takephoto
+      t = Thread(target=shoot, args=(10,))
+      t.start()
       alert(20)
   elif (secure==2):
     print "danger"
