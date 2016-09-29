@@ -5,6 +5,7 @@ import Adafruit_DHT
 import RPi.GPIO as GPIO
 from threading import Thread
 import paho.mqtt.client as mqtt 
+import picamera
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
